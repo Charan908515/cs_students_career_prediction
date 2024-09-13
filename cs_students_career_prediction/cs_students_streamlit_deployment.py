@@ -5,11 +5,56 @@ from sklearn.preprocessing import LabelEncoder
 import streamlit as st
 import numpy as np
 import warnings
-
+import sys
+import path
 # Suppress specific warning
 warnings.filterwarnings("ignore", message="X does not have valid feature names")
+dir = path.Path(__file__).abspath()
+sys.append.path(dir.parent.parent)
 
-scaler=pickle.load(open("Charan908515/ml_projects/cs_students_career_prediction/cs_students_scaler.pkl","rb"))
+# load model
+scaler = "./cs_students_career_prediction/cs_students_scaler.pkl"
+
+
+with open(scaler, 'rb') as file:
+    scaler = pickle.load(file)
+    
+
+model = "./cs_students_career_prediction/cs_students_model.pkl"
+
+
+with open(model, 'rb') as file:
+    model = pickle.load(file)
+gender_encoder = "./cs_students_career_prediction/cs_students_gender_encoder.pkl"
+
+
+with open(gender_encoder, 'rb') as file:
+    gender_encoder = pickle.load(file)
+java_encoder = "./cs_students_career_prediction/cs_students_java_encoder.pkl"
+
+
+with open(java_encoder, 'rb') as file:
+    java_encoder = pickle.load(file)
+py_encoder = "./cs_students_career_prediction/cs_students_py_encoder.pkl"
+
+
+with open(py_encoder, 'rb') as file:
+    py_encoder = pickle.load(file)
+sql_encoder = "./cs_students_career_prediction/cs_students_sql_encoder.pkl"
+
+
+with open(sql_encoder, 'rb') as file:
+    sql_encoder = pickle.load(file)
+domain_encoder = "./cs_students_career_prediction/cs_students_domain_encoder.pkl"
+
+
+with open(domain_encoder, 'rb') as file:
+    domain_encoder = pickle.load(file)
+project_encoder = "./cs_students_career_prediction/cs_students_project_encoder.pkl"
+
+
+with open(project_encoder, 'rb') as file:
+    project_encoder = pickle.load(file)
 model=pickle.load(open("Charan908515/ml_projects/cs_students_career_prediction/cs_students_model.pkl","rb"))
 gender_encoder=pickle.load(open("Charan908515/ml_projects/cs_students_career_prediction/cs_students_gender_encoder.pkl","rb"))
 java_encoder=pickle.load(open("Charan908515/ml_projects/cs_students_career_prediction/cs_students_java_encoder.pkl","rb"))
@@ -17,9 +62,9 @@ sql_encoder=pickle.load(open("Charan908515/ml_projects/cs_students_career_predic
 py_encoder=pickle.load(open("Charan908515/ml_projects/cs_students_career_prediction/cs_students_py_encoder.pkl","rb"))
 domain_encoder=pickle.load(open("Charan908515/ml_projects/cs_students_career_prediction/cs_students_domain_encoder.pkl","rb"))
 project_encoder=pickle.load(open("Charan908515/ml_projects/cs_students_career_prediction/cs_students_project_encoder.pkl","rb"))
-with open("Charan908515/ml_projects/cs_students_career_prediction/cs_students_future_career.pkl", "rb") as file:
+with open(".cs_students_career_prediction/cs_students_future_career.pkl", "rb") as file:
     future_encoder = pickle.load(file, encoding="latin1")
-data=pd.read_csv("Charan908515/ml_projects/cs_students_career_prediction/cs_students.csv")
+data=pd.read_csv("./cs_students_career_prediction/cs_students.csv")
 df=pd.DataFrame(data)
 domain_options=df["Interested Domain"].unique()
 project_options=df["Projects"].unique()
