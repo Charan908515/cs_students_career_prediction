@@ -4,7 +4,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
-
+import streamlit as st
 data=pd.read_csv("C:/Users/nchar/Downloads/Churn_Modelling.csv")
 df=pd.DataFrame(data)
 df.drop(columns=["RowNumber","CustomerId","Surname"],axis=1,inplace=True)
@@ -52,3 +52,25 @@ if prediction2<=0.5:
     print("no")
 else:
     print("yes")
+st.title("Bank Churn Prediction")
+credit_score=st.slider("enter credit score",400,1000,651)
+geography=st.selectbox("choose the region",map2.keys())
+gender=st.selectbox("choose the region",map1.keys())
+age=st.slider("enter age",18,100,21)
+tenure=st.slider("enter tenure",0,10)
+balance=st.slider("enter balance",0.0,10000.2)
+nop=st.slider("enter nop",0,10)
+cr=st.slider("has card",0,1)
+active=st.slider("is active",0,1)
+geography=map2[geography]
+gender=map1[gender]
+input3=np.array([credit_score,geography,gender,age,tenure,balance,nop,cr,active,94153.83])
+input3=scaler.transform([input3])
+prediction3=model.predict(input3)
+print(prediction3)
+if prediction2<=0.5:
+    st.write("no")
+else:
+    st.write("yes")
+
+
