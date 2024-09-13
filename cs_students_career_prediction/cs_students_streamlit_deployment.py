@@ -9,17 +9,17 @@ import warnings
 # Suppress specific warning
 warnings.filterwarnings("ignore", message="X does not have valid feature names")
 
-scaler=pickle.load(open("C:/Users/nchar/Documents/pythonProject/cs_students_career_prediction/cs_students_scaler.pkl","rb"))
-model=pickle.load(open("C:/Users/nchar/Documents/pythonProject/cs_students_career_prediction/cs_students_model.pkl","rb"))
-gender_encoder=pickle.load(open("C:/Users/nchar/Documents/pythonProject/cs_students_career_prediction/cs_students_gender_encoder.pkl","rb"))
-java_encoder=pickle.load(open("C:/Users/nchar/Documents/pythonProject/cs_students_career_prediction/cs_students_java_encoder.pkl","rb"))
-sql_encoder=pickle.load(open("C:/Users/nchar/Documents/pythonProject/cs_students_career_prediction/cs_students_sql_encoder.pkl","rb"))
-py_encoder=pickle.load(open("C:/Users/nchar/Documents/pythonProject/cs_students_career_prediction/cs_students_py_encoder.pkl","rb"))
-domain_encoder=pickle.load(open("C:/Users/nchar/Documents/pythonProject/cs_students_career_prediction/cs_students_domain_encoder.pkl","rb"))
-project_encoder=pickle.load(open("C:/Users/nchar/Documents/pythonProject/cs_students_career_prediction/cs_students_project_encoder.pkl","rb"))
-with open("C:/Users/nchar/Documents/pythonProject/cs_students_career_prediction/cs_students_future_career.pkl", "rb") as file:
+scaler=pickle.load(open("cs_students_scaler.pkl","rb"))
+model=pickle.load(open("cs_students_model.pkl","rb"))
+gender_encoder=pickle.load(open("cs_students_gender_encoder.pkl","rb"))
+java_encoder=pickle.load(open("cs_students_java_encoder.pkl","rb"))
+sql_encoder=pickle.load(open("cs_students_sql_encoder.pkl","rb"))
+py_encoder=pickle.load(open("cs_students_py_encoder.pkl","rb"))
+domain_encoder=pickle.load(open("cs_students_domain_encoder.pkl","rb"))
+project_encoder=pickle.load(open("cs_students_project_encoder.pkl","rb"))
+with open("cs_students_future_career.pkl", "rb") as file:
     future_encoder = pickle.load(file, encoding="latin1")
-data=pd.read_csv("C:/Users/nchar/Documents/pythonProject/cs_students_career_prediction/cs_students.csv")
+data=pd.read_csv("cs_students.csv")
 df=pd.DataFrame(data)
 domain_options=df["Interested Domain"].unique()
 project_options=df["Projects"].unique()
